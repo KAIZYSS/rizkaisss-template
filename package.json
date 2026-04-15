@@ -1,0 +1,24 @@
+{
+  "name": "rizkaisss",
+  "version": "1.0.1",
+  "description": "Aveek's project CLI",
+  "main": "index.js",
+  "bin": {
+    "rizkaisss": "./index.js"
+  },
+  "files": [
+    "template",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"No test\""
+  },
+  "keywords": [
+    "cli",
+    "projects",
+    "aveek"
+  ],
+  "author": "Aveek",
+  "license": "ISC",
+  "type": "commonjs"
+}
