@@ -1,0 +1,180 @@
+======================================================
+         EXAM CHEATSHEET: JAVASCRIPT & REACT         
+======================================================
+
+------------------------------------------------------
+SECTION A: CORE JAVASCRIPT
+------------------------------------------------------
+
+// 1. if-else
+let age = 18;
+if (age >= 18) {
+  console.log('Adult');
+} else {
+  console.log('Minor');
+}
+
+// 2. switch
+let day = 'Monday';
+switch (day) {
+  case 'Monday':
+    console.log('Start of week');
+    break;
+  default:
+    console.log('Other day');
+}
+
+// 3. average calculation
+const grades = [80, 90, 100];
+const average = grades.reduce((sum, curr) => sum + curr, 0) / grades.length;
+
+// 4. rating calculation
+const getRating = (stars) => {
+  return stars >= 4 ? 'Excellent' : 'Needs Improvement';
+};
+
+// 5. health risk logic
+const bmi = 26;
+const healthRisk = bmi > 25 ? 'High Risk' : 'Normal';
+
+// 6. pass/fail
+const checkPass = (score) => score >= 50 ? 'Pass' : 'Fail';
+
+// 7. grade system
+const getGrade = (score) => {
+  if (score >= 90) return 'A';
+  if (score >= 80) return 'B';
+  if (score >= 70) return 'C';
+  return 'F';
+};
+
+// 8. filter and sort
+const numbers = [5, 2, 8, 1, 4];
+const evens = numbers.filter(n => n % 2 === 0);
+const sorted = numbers.sort((a, b) => a - b); // Ascending
+
+// 9. validation
+const validateForm = (username, password) => {
+  if (!username || !password) return false;
+  if (password.length < 8) return false;
+  return true;
+};
+
+// 10. DOM access methods
+const elById = document.getElementById('myId');
+const elByClass = document.querySelector('.myClass');
+
+------------------------------------------------------
+SECTION B: REACT BASICS
+------------------------------------------------------
+
+// 1. useState example
+const [count, setCount] = useState(0);
+
+// 2. useEffect example
+useEffect(() => {
+  console.log('Component mounted or updated');
+  // cleanup
+  return () => console.log('Component unmounted');
+}, []);
+
+// 3. handleChange
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setFormState(prev => ({ ...prev, [name]: value }));
+};
+
+// 4. handleSubmit
+const handleSubmit = (e) => {
+  e.preventDefault();
+  submitData(formState);
+};
+
+// 5. props passing
+<ChildComponent title="Hello" onAction={handleClick} />
+
+// 6. props destructuring
+const ChildComponent = ({ title, onAction }) => {
+  return <button onClick={onAction}>{title}</button>;
+};
+
+// 7. map rendering
+<ul>
+  {items.map(item => (
+    <li key={item.id}>{item.name}</li>
+  ))}
+</ul>
+
+// 8. conditional rendering
+{isLoading ? <p>Loading...</p> : <p>Data loaded!</p>}
+
+------------------------------------------------------
+SECTION C: API CALLS
+------------------------------------------------------
+
+// 1. fetch API example
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+// 2. axios example
+axios.get('https://api.example.com/data')
+  .then(response => console.log(response.data));
+
+// 3. async/await usage & 4. error handling (try-catch)
+const fetchData = async () => {
+  try {
+    const response = await axios.get('https://api.example.com/data');
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+------------------------------------------------------
+SECTION D: EXTERNAL LIBRARIES
+------------------------------------------------------
+
+// 1. axios import and usage
+import axios from 'axios';
+const getWeather = () => axios.get('/weather');
+
+// 2. uuid usage
+import { v4 as uuidv4 } from 'uuid';
+const newId = uuidv4(); // '110ec58a-a0f2-4ac4-8393-c866d813b8d1'
+
+// 3. react-icons usage
+import { FaTrash, FaEdit } from 'react-icons/fa';
+const DeleteButton = () => <button><FaTrash /> Delete</button>;
+
+------------------------------------------------------
+SECTION E: EXTRA (HIGH MARKS)
+------------------------------------------------------
+
+// 1. filtering data
+const searchResults = items.filter(item => 
+  item.name.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
+// 2. sorting data
+const sortedItems = [...items].sort((a, b) => 
+  a.name.localeCompare(b.name)
+);
+
+// 3. conditional styling
+<div className={`base-class ${isActive ? 'active' : 'inactive'}`}>
+  Content
+</div>
+// or inline styles
+<div style={{ color: isError ? 'red' : 'green' }}>
+  Message
+</div>
+
+// 4. simple edit logic
+const handleEdit = (id, newName) => {
+  setItems(prevItems => 
+    prevItems.map(item => 
+      item.id === id ? { ...item, name: newName } : item
+    )
+  );
+};

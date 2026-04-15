@@ -1,0 +1,100 @@
+🔥 🧭 MASTER ROADMAP (WHAT TO COPY FROM WHERE)
+🎯 STEP 1: Identify Question Type (10 sec decision)
+Question says	Type
+“Create React app”	React CRUD
+“Form + calculate”	JS logic
+“API / fetch”	Search/API
+“Events / DOM”	HTML JS
+⚡ CASE 1: React App (Task / Food / Event)
+🧩 WHAT TO COPY
+
+👉 From your existing files:
+
+File	What to use
+App.js	Full copy
+Form.js	Full copy
+List.js	Full copy
+Item.js	Full copy
+🔁 WHAT TO CHANGE
+name → task / food / event
+value → date / quantity
+category → priority / type
+
+👉 THAT’S IT. No logic change.
+
+⚡ CASE 2: Calculation Question (Average / Result)
+🧩 COPY FROM:
+
+👉 cheatsheet.txt
+
+let total = m1 + m2;
+let avg = total / 2;
+📍 PASTE INTO:
+
+👉 handleSubmit() in Form.js
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  let total = m1 + m2;
+  let avg = total / 2;
+};
+⚡ CASE 3: Health Risk / Condition
+🧩 COPY FROM:
+
+👉 cheatsheet.txt
+
+if (bmi < 18.5 || bp < 90) { ... }
+📍 PASTE INTO:
+
+👉 inside submit OR separate function
+
+⚡ CASE 4: API / SEARCH (MOVIE TYPE)
+🧩 COPY FROM:
+
+👉 Search.js OR cheatsheet
+
+const fetchData = async () => {
+  const res = await fetch("API_URL");
+  const data = await res.json();
+
+  const filtered = data.filter(item =>
+    item.title.includes(query)
+  );
+
+  setData(filtered);
+};
+📍 ADD IN:
+
+👉 App.js OR separate component
+
+📍 ALSO ADD:
+const [query, setQuery] = useState("");
+const [data, setData] = useState([]);
+⚡ CASE 5: FILTER / SORT
+🧩 COPY FROM:
+
+👉 cheatsheet
+
+items.filter(item => item.category === "High")
+📍 USE IN:
+
+👉 before map()
+
+⚡ CASE 6: VALIDATION
+🧩 COPY:
+if (!name || !value) {
+  alert("Fill all fields");
+  return;
+}
+📍 PUT IN:
+
+👉 handleSubmit()
+
+⚡ CASE 7: DISPLAY LIST
+🧩 ALWAYS USE:
+items.map(item => (
+  <p>{item.name}</p>
+))
+💀 GOLDEN FLOW (REMEMBER THIS)
+Form → useState → handleSubmit → store → map → display
